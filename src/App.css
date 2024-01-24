@@ -1,38 +1,226 @@
-.App {
+* This will set the font family and color for the whole page */
+body {
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+/* This will add some margin and padding to the row and column elements */
+.row, .col {
+  margin: 10px;
+  padding: 10px;
+}
+
+/* This will center the text in the left column */
+.head {
+  text-align: center;
+  font-size: medium;
+}
+.cont {
+  text-align: left;
+  font-size: larger;
+  font-weight:normal;
+}
+
+/* This will add a border and some shadow to the image in the right column */
+img {
+  border: 1px solid #ccc;
+  box-shadow: 5px 5px 10px #999;
+  height: 300px;
+  width: 450px;
+  margin-left: 10%;
+}
+
+.book{
+  
+  position:relative;
+  width: auto;
+  display:inline-block;
+  color:#ecf0f1;
+  text-decoration:none;
+  border-radius:20px;
+  border:solid 1px #0e0e0e;
+  background:#0f0f0f;
+  text-align:center;
+  padding:16px 18px 14px;
+  margin: 12px;
+  
+  -webkit-transition: all 0.1s;
+	-moz-transition: all 0.1s;
+	transition: all 0.1s;
+	
+  -webkit-box-shadow: 0px 6px 0px #82cdf3;
+  -moz-box-shadow: 0px 6px 0px #82cdf3;
+  box-shadow: 0px 6px 0px #82cdf3;
+}
+
+.book:active{
+  -moz-box-shadow: 0px 2px 0px #82cdf3;
+    box-shadow: 0px 2px 0px #82cdf3;
+    position:relative;
+    top:4px;
+}
+
+
+.footer-bottom {
+  position: relative;
+  padding: 25px 0;
+  background: #111111;
+}
+
+.footer-bottom .copyright {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.footer-bottom .copyright p {
+  color: #ffffff;
+  font-weight: 400;
+  margin: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.footer-bottom .copyright p {
+  font-weight: 600;
+}
+
+.footer-bottom .copyright p a:hover{
+  color: #ffffff;
+}
+
+@media (max-width: 768.98px) {
+  .footer-bottom .copyright{
+      text-align: center; 
+  } 
+}
+
+
+
+
+/*          Login page css             */
+/* Custom styles for the login page */
+
+.container.kvnkjabvav {
+  background-color: #f8f9fa; /* Light gray background */
+}
+
+.card.o-hidden {
+  border: none;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+  padding: 0;
+}
+
+.user-heading {
+  margin-bottom: 0px;
+}
+
+.user-heading h1 {
+  font-size: 2.5em;
+  color: #18f011; /* Hero text color */
+}
+
+.card-body h1 {
+  font-size: 1.5em;
+  color: #4a00f5; /* Heading text color */
+}
+
+.form-control-user {
+  border: 1px solid #d1d3e2; /* Light border color */
+  border-radius: 50px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  font-weight: bold;
+  color: #1a1a1a; /* Label text color */
+}
+
+.btn-user {
+  background-color: #0e0e0e; /* Button background color */
+  color: #fff; /* Button text color */
+  border: none;
+  border-radius: 50px;
+  padding: 0.75rem 1.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-user:hover {
+  background-color: #c7381d; /* Button hover background color */
+}
+
+.btn-google {
+  background-color: #4285f4; /* Google button background color */
+  color: #fff; /* Button text color */
+}
+
+.btn-facebook {
+  background-color: #3b5998; /* Facebook button background color */
+  color: #fff; /* Button text color */
+}
+
+.small {
+  font-size: 0.85em;
+  color: #6c757d; /* Small text color */
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .card.o-hidden {
+    margin-top: 20px;
   }
 }
+.popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 2; /* Ensure it's above other elements */
+}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.popup.open {
   display: flex;
-  flex-direction: column;
+}
+
+.popup-content {
+  background: #fff;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  width: 60%;
+  max-width: 600px;
+  position: relative;
+  z-index: 3;/* Ensure it's above the background */
+}.close-button {
+  background: #101010;
+  color: #fff;
+  border: 2px rgb(254, 4, 4) solid;
+  border-radius: 40%;
+  cursor: pointer;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  left: 95%;
+  bottom: 93%;
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+/* Add styles for "x" icon */
+.close-button::after {
+  content: '×'; /* Unicode character for "times" symbol (×) */
+  font-size: 24px;
+  font-weight: bold;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+
