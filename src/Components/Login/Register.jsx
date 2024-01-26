@@ -30,6 +30,7 @@ function Register() {
       });
       
   const onSubmit = (values, actions) => {
+    alert(" Successfully Registered")
     // Simulate submitting the form data to a server
     setTimeout(() => {
       console.log("Form submitted with values:", values);
