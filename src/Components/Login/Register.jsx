@@ -1,7 +1,7 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-
+import axios from "axios";
 
 function Register() {
 
@@ -29,12 +29,16 @@ function Register() {
           .required('Required'),
       });
       
-  const onSubmit = (values, actions) => {
-    alert(" Successfully Registered")
-    // Simulate submitting the form data to a server
-    setTimeout(() => {
-      console.log("Form submitted with values:", values);
-    }, 500);
+  const onSubmit = async (values) => {
+    try{
+      //send the form data to backend 
+      const response = await axios.post("http://localhost:5000/register", values);
+      console.log("Response from server",response.data);
+      alert("Successfully Registered");
+    } catch(error) {
+    console.error("Error:", error);
+    alert("Registration failed. Please try again")
+    }
   };
   return (
     <div className="bg-gray-100 min-h-screen flex justify-center items-center">

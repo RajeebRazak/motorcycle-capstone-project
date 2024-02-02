@@ -24,7 +24,7 @@ import facebook from "../Images/facebook.png";
   
 function Login() {
   return (
-    <div className="bg-gradient-to-r from-purple-500 via-blue-500 to-green-500 min-h-screen flex flex-col justify-center items-center">
+    <div className="bg-black min-h-screen flex flex-col justify-center items-center">
       <Formik
         initialValues={{
           email: "",
@@ -77,7 +77,7 @@ function Login() {
           </div>
           <div className="flex items-center justify-between mb-4">
             <button
-              type="button"
+              type="submit"
               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mr-2"
             >
               Log In

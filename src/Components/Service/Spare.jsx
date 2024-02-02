@@ -18,7 +18,7 @@ function Spare() {
               <Nav.Link as={Link} to="/price">Service cost</Nav.Link>
             </Nav>
             <Nav>
-              <Button className="ml-auto" variant="outline-primary" typeof="submit">
+              <Button as={Link} to="/cart" className="ml-auto" variant="outline-primary" typeof="submit">
                 {" "}
                 <i className="bi-cart-fill me-1"></i>
                 Cart{" "}

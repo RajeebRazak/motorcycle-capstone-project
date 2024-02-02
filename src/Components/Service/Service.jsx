@@ -3,14 +3,8 @@ import { Link } from 'react-router-dom'
 import { Container , Navbar , Nav } from 'react-bootstrap'
 import { useState } from 'react'
 
-function Service() {
- const [formData, setFormData] = useState([]);
-
- const handleFormSubmit = (data) => {
-  setFormData((prevFormData) => [...prevFormData, data]);
-  console.log("Form data added to state:", data);
-};
-
+function Service({ formData }) {
+ 
   return (
     <div>
       <Navbar bg="dark" data-bs-theme="dark">
@@ -41,19 +35,26 @@ function Service() {
       </tr>
     </thead>
     <tbody>
-      {formData.map((data, index) => (
-      <tr key={index}> 
-        <td className="py-2 px-4 border-b">{data.dateofbooking}</td>
-        <td className="py-2 px-4 border-b">{data.categoryofvehicle}</td>
-        <td className="py-2 px-4 border-b">{data.bikemodel}</td>
-        <td className="py-2 px-4 border-b">{data.year}</td>
-        <td className="py-2 px-4 border-b">{data.typeofservice}</td>
-        <td className="py-2 px-4 border-b">{data.customercomplaint.join(", ")}</td>
-        <td className="py-2 px-4 border-b">{data.status}</td>
-        <td className="py-2 px-4 border-b">{data.payment}</td>
-      </tr>
-      ))}
-    </tbody>
+            {formData.map((data, index) => (
+              <tr key={index}>
+                <td className="py-2 px-4 border-b">{data.dateofbooking}</td>
+                <td className="py-2 px-4 border-b">{data.categoryofvehicle}</td>
+                <td className="py-2 px-4 border-b">{data.bikemodel}</td>
+                <td className="py-2 px-4 border-b">{data.year}</td>
+                <td className="py-2 px-4 border-b">{data.typeofservice}</td>
+                <td className="py-2 px-4 border-b">{data.customercomplaint.join(", ")}</td>
+                <td className="py-2 px-4 border-b">{data.status}</td>
+                <td className="py-2 px-4 border-b">
+                  {data.status === 'pending' && ( // Conditional rendering based on status
+                    <Button variant="success">Approved</Button>
+                  )}
+                  {data.status === 'approved' && ( // Conditional rendering based on status
+                    <Button variant="primary">Pay Now</Button>
+                  )}
+                </td>
+              </tr>
+            ))}
+          </tbody>
   </table>
 </div>
  

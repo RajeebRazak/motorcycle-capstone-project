@@ -13,6 +13,7 @@ import Register from './Components/Login/Register';
 import Cusprice from './Components/Service/Cusprice';
 import Admin from './Components/Admin/Admin';
 import PrivateRoute from './Components/Admin/Privateroute';
+import Cart from './Components/Service/Cart';
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
             <Route path="/form" element={<Cusform />} />
             <Route path="/register" element={<Register />} />
             <Route path="/price" element={<Cusprice />} />
+            <Route path="/cart" element={<Cart />} />
             <Route path="/admin" element={<PrivateRoute element={<Admin />} />} />
 
           </Routes>
