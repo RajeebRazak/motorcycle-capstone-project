@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { Container , Navbar , Nav , Button } from 'react-bootstrap'
 import { useState } from 'react'
 
-function Service({ formData }) {
+function Service({ formData = [] }) {
  
   return (
     <div>
