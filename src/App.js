@@ -14,6 +14,7 @@ import Cusprice from './Components/Service/Cusprice';
 import Admin from './Components/Admin/Admin';
 import PrivateRoute from './Components/Admin/Privateroute';
 import Cart from './Components/Service/Cart';
+import Contact from './Components/contact/Contact';
 
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
             <Route path="/price" element={<Cusprice />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/admin" element={<PrivateRoute element={<Admin />} />} />
+            <Route path="/contactus" element={<Contact />} />
 
           </Routes>
         </AuthProvider>
