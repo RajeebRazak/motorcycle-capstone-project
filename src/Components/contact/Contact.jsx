@@ -1,7 +1,25 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { Nav , Navbar, Container} from 'react-bootstrap'
 
 function Contact() {
   return (
+    <>
+     <div>
+        <Navbar bg="dark" data-bs-theme="dark">
+          <Container>
+            <Navbar.Brand as={Link} to="/">Hero</Navbar.Brand>
+            <Nav className="me-auto">
+              <Nav.Link as={Link} to="/aboutus">About Us</Nav.Link>
+              <Nav.Link as={Link} to="/gallery">Gallery</Nav.Link>
+              <Nav.Link as={Link} to="/service">Service</Nav.Link>
+              <Nav.Link as={Link} to="/spare">Spare's</Nav.Link> 
+              <Nav.Link as={Link} to="/price">Service cost</Nav.Link>
+            </Nav>
+          </Container>
+        </Navbar>
+      </div>
+    
     <div>
     <section className="bg-light py-3 py-md-5">
       <div className="container">
@@ -16,7 +34,7 @@ function Contact() {
       <div className="container">
         <div className="row gy-3 gy-md-4 gy-lg-0 align-items-xl-center">
           <div className="col-12 col-lg-6">
-            <img className="img-fluid rounded" loading="lazy" src="./assets/img/contact-img-1.jpg" alt="Get in Touch"/>
+            <img className="img-fluid rounded" loading="lazy" src="https://img.freepik.com/free-photo/hot-line-contact-us-call-center-search-interface_53876-124009.jpg" alt="Get in Touch"/>
           </div>
           <div className="col-12 col-lg-6">
             <div className="row justify-content-xl-center">
@@ -66,7 +84,7 @@ function Contact() {
                       </div>
                     </div>
                   </form>
-    
+                  
                 </div>
               </div>
             </div>
@@ -76,6 +94,7 @@ function Contact() {
     </section>
 
     </div>
+    </>
   )
 }
 

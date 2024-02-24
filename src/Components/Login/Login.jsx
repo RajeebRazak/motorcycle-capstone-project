@@ -1,9 +1,10 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage, validateYupSchema } from "formik";
 import * as Yup from "yup";
-import { Link } from "react-router-dom";
+import { Link , useNavigate } from "react-router-dom";
 import google from "../Images/google.jpg";
 import facebook from "../Images/facebook.png";
+import axios from "axios";
 
  const LoginSchema = Yup.object().shape({
     email: Yup.string()
@@ -14,15 +15,36 @@ import facebook from "../Images/facebook.png";
    .required("Password is required"),
   });
  
-  const onSubmit = (values , actions) => {
-    alert(" Successfully Logged In")
-    setTimeout(() => {
-      console.log("Form submitted with values:", values);
-    }, 500);
-  };
-
   
-function Login() {
+const Login = () => {
+
+  const navigate = useNavigate();
+  
+  const onSubmit = async (values , actions) => {
+    try {
+     const response = await  axios.post("http://localhost:3005/auth/login", {
+       email: values.email,
+       password: values.password,
+     });
+     // Assuming your backend returns a success message upon successful login
+     console.log("Response from server",response.data);
+     alert("Login Successful ");
+
+     const userRole = response.data.role;
+
+     if (userRole === "admin") {
+      navigate('/admin');
+     } else {
+     // Redirect to home page upon successful login
+     navigate('/');
+     }
+   } catch (error) {
+     // Handle error such as displaying error message to the user
+     console.error('Login error:', error);
+     alert('Login failed. Please check your credentials and try again.');
+    }
+   };
+ 
   return (
     <div className="bg-black min-h-screen flex flex-col justify-center items-center">
       <Formik

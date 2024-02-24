@@ -2,6 +2,7 @@ import React from "react";
 import { Formik, Field, Form, ErrorMessage, useFormik } from "formik";
 import * as Yup from "yup";
 import { useState } from "react";
+import axios from "axios";
 
 function Cusform() {
   const [formData, setFormData] = useState([]);
@@ -19,8 +20,9 @@ function Cusform() {
 
   const onSubmit = async (values, actions) => {
     try {
-      console.log("Form values:", values);
-      setFormData((prevFormData) => [...prevFormData, values]); // Add form data to state
+      // Send the form data to the backend using axios.
+      const response = await axios.post("http://localhost3005/form/forms/submit", values)
+      console.log("Response from server", response.data);
       window.alert("Form submitted successfully!");
       actions.resetForm();
       console.log("Form reset completed");

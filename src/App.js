@@ -15,6 +15,7 @@ import Admin from './Components/Admin/Admin';
 import PrivateRoute from './Components/Admin/Privateroute';
 import Cart from './Components/Service/Cart';
 import Contact from './Components/contact/Contact';
+import About from './Components/contact/About';
 
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
             <Route path="/cart" element={<Cart />} />
             <Route path="/admin" element={<PrivateRoute element={<Admin />} />} />
             <Route path="/contactus" element={<Contact />} />
+            <Route path="/aboutus" element={<About />} />
 
           </Routes>
         </AuthProvider>

@@ -2,8 +2,11 @@ import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function Register() {
+
+   const navigate = useNavigate();
 
     const SignupSchema = Yup.object().shape({
         firstname: Yup.string()
@@ -32,9 +35,10 @@ function Register() {
   const onSubmit = async (values) => {
     try{
       //send the form data to backend 
-      const response = await axios.post("http://localhost:5000/register", values);
+      const response = await axios.post("http://localhost:3005/auth/signup", values);
       console.log("Response from server",response.data);
       alert("Successfully Registered");
+      navigate("/login");
     } catch(error) {
     console.error("Error:", error);
     alert("Registration failed. Please try again")
