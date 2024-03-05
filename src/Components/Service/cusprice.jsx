@@ -1,55 +1,63 @@
-import React from 'react'
-import { Container, Navbar, Nav } from 'react-bootstrap';
+import React from "react";
 import { Link } from "react-router-dom";
-import { Pricelist } from '../Price/Pricelist';
-
-
+import { Pricelist } from "../Price/Pricelist";
+import { Container, Navbar, Nav, Button } from "react-bootstrap";
 
 function Cusprice() {
+ 
   return (
     <div>
       <div>
-    <Navbar bg="dark" data-bs-theme="dark">
+      <Navbar bg="dark" variant="dark" expand="md">
       <Container>
         <Navbar.Brand as={Link} to="/">Hero</Navbar.Brand>
-        <Nav className="me-auto">
-          <Nav.Link as={Link} to="/aboutus">About Us</Nav.Link>
-          <Nav.Link as={Link} to="/contactus">Contact Us</Nav.Link>
-          <Nav.Link as={Link} to="/service">Service</Nav.Link>
-          <Nav.Link as={Link} to="/spare">Spare's</Nav.Link> 
-          <Nav.Link as={Link} to="/gallery">Gallery</Nav.Link>
-        </Nav>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="me-auto">
+            <Nav.Link as={Link} to="/aboutus">About Us</Nav.Link>
+            <Nav.Link as={Link} to="/contactus">Contact Us</Nav.Link>
+            <Nav.Link as={Link} to="/service">Service</Nav.Link>
+            <Nav.Link as={Link} to="/gallery">Gallery</Nav.Link>
+            <Nav.Link as={Link} to="/spare"> Spare's</Nav.Link>
+          </Nav>
+        </Navbar.Collapse>
       </Container>
     </Navbar>
-  </div>
-  <section className="py-1 bg-light">
-            <div className="container px-4 px-lg-5 mt-1">
-                <h2 className="fw-bolder mb-1">Price List</h2>
-                <div className="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-evenly">
-                { Pricelist.map(service => (
-                <div key={service.id} className="col mb-5">
-                        <div className="card h-100">
-                        
-                            <img className="card-img-top" src={service.image} alt="..." />
-                         
-                            <div className="card-body p-4">
-                                <div className="text-center">
-                                
-                                    <h5 className="fw-bolder">{service.serviceType}</h5>
-                                    {service.details && ( <p>{service.details.join(', ')}</p>
-                                    )}
-                              
-                                    ${service.price.toFixed(2)} 
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                ))}
+      </div>
+
+      <section className="py-8 bg-gray-100">
+        <div className="container mx-auto px-4">
+          <h2 className="text-2xl font-bold mb-4">Price List</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {Pricelist.map((service) => (
+              <div key={service.id} className="max-w-sm mx-auto">
+                <div className="bg-white rounded-lg overflow-hidden shadow-md">
+                  <img
+                    className="w-full h-64 object-cover ml-0"
+                    src={service.image}
+                    alt="Service"
+                  />
+                  <div className="p-4">
+                    <h5 className="font-bold text-lg mb-2">
+                      {service.serviceType}
+                    </h5>
+                    {service.details && (
+                      <p className="text-gray-700 mb-2">
+                        {service.details.join(", ")}
+                      </p>
+                    )}
+                    <p className="text-xl font-bold">
+                      ${service.price.toFixed(2)}
+                    </p>
+                  </div>
                 </div>
-                </div>
-                </section>
-  </div>
-  )
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </div>
+  );
 }
 
-export default Cusprice
+export default Cusprice;

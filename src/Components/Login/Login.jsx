@@ -20,30 +20,41 @@ const Login = () => {
 
   const navigate = useNavigate();
   
-  const onSubmit = async (values , actions) => {
+  const onSubmit = async (values, actions) => {
     try {
-     const response = await  axios.post("http://localhost:3005/auth/login", {
-       email: values.email,
-       password: values.password,
-     });
-     // Assuming your backend returns a success message upon successful login
-     console.log("Response from server",response.data);
-     alert("Login Successful ");
-
-     const userRole = response.data.role;
-
-     if (userRole === "admin") {
-      navigate('/admin');
-     } else {
-     // Redirect to home page upon successful login
-     navigate('/');
-     }
-   } catch (error) {
-     // Handle error such as displaying error message to the user
-     console.error('Login error:', error);
-     alert('Login failed. Please check your credentials and try again.');
+      const response = await axios.post("http://localhost:3001/auth/login", {
+        email: values.email,
+        password: values.password,
+      });
+      // Assuming your backend returns a success message upon successful login
+      console.log("Response from server", response.data);
+      alert("Login Successful");
+  
+      const userRole = response.data.role;
+      console.log(userRole);
+  
+      if (userRole === "admin") {
+        navigate('/admin');
+      } else {
+        // Redirect to home page upon successful login
+        navigate('/');
+      }
+    } catch (error) {
+      // Handle error such as displaying error message to the user
+      console.error('Login error:', error);
+      if (error.response) {
+        console.log('Server Error:', error.response.data);
+        alert('Login failed. Please check your credentials and try again.');
+      } else if (error.request) {
+        console.log('Request Error:', error.request);
+        alert('Request failed. Please try again later.');
+      } else {
+        console.log('Other Error:', error.message);
+        alert('Login failed. Please try again later.');
+      }
     }
-   };
+  };
+  
  
   return (
     <div className="bg-black min-h-screen flex flex-col justify-center items-center">

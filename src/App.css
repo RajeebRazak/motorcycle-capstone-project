@@ -222,3 +222,47 @@ img {
   font-size: 24px;
   font-weight: bold;
 }
+
+/* Navbar for large screens */
+@media (min-width: 768px) {
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+  }
+
+  .navbar-nav {
+    display: flex;
+    list-style: none;
+  }
+
+  .nav-item {
+    margin-right: 1rem;
+  }
+
+  .nav-link {
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .nav-link:hover {
+    color: #f3f4f6;
+  }
+}
+
+/* Navbar for small screens */
+@media (max-width: 767px) {
+  .navbar-nav {
+    display: none;
+  }
+
+  .menu-button {
+    display: block;
+  }
+
+  .hidden {
+    display: none;
+  }
+}

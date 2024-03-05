@@ -35,7 +35,7 @@ function Register() {
   const onSubmit = async (values) => {
     try{
       //send the form data to backend 
-      const response = await axios.post("http://localhost:3005/auth/signup", values);
+      const response = await axios.post("http://localhost:3001/auth/signup", values);
       console.log("Response from server",response.data);
       alert("Successfully Registered");
       navigate("/login");

@@ -21,7 +21,10 @@ function Cusform() {
   const onSubmit = async (values, actions) => {
     try {
       // Send the form data to the backend using axios.
-      const response = await axios.post("http://localhost3005/form/forms/submit", values)
+      const response = await axios.post(
+        "http://localhost3001/form/forms/submit",
+        values
+      );
       console.log("Response from server", response.data);
       window.alert("Form submitted successfully!");
       actions.resetForm();
@@ -50,66 +53,86 @@ function Cusform() {
       validationSchema={formik.validationSchema}
       onSubmit={formik.onSubmit}
     >
-      <Form>
-        <div className="form-group">
-          <label htmlFor="dateofbooking">Date Of Booking</label>
+      <div className="min-w-md mx-auto max-h-screen overflow-center">
+    <Form className="flex flex-col space-y-4">
+        <div className="mb-1">
+          <label htmlFor="dateofbooking" className="block font-bold">
+            Date Of Booking
+          </label>
           <Field
             type="date"
             name="dateofbooking"
-            className="form-control"
+            className="form-input"
             placeholder="Select Booking Date"
             id="dateofbooking"
           />
           <ErrorMessage
             name="dateofbooking"
             component="div"
-            className="invalid-feedback "
+            className="text-red-500 text-sm"
           />
         </div>
-        <div className="form-group">
-          <label htmlFor="categoryofvehicle"> Category Of Vehicle</label>
-          <select
-            className="form-control"
-            id="categoryofvehicle"
+        <div className="mb-1">
+          <label htmlFor="categoryofvehicle" className="block font-bold">
+            Category Of Vehicle
+          </label>
+          <Field
+            as="select"
             name="categoryofvehicle"
+            className="form-select"
+            id="categoryofvehicle"
           >
             <option value="">Select The Category</option>
             <option value="Bike">Bike</option>
             <option value="Scooty">Scooty</option>
-          </select>
+          </Field>
           <ErrorMessage
             name="categoryofvehicle"
             component="div"
-            className="invalid-feedback"
+            className="text-red-500 text-sm"
           />
         </div>
-        <div className="form-group">
-          <label htmlFor="bikemodel">Bike Model</label>
-          <select name="bikemodel" className="form-control" id="bikemodel">
+        <div className="mb-1">
+          <label htmlFor="bikemodel" className="block font-bold">
+            Bike Model
+          </label>
+          <Field
+            as="select"
+            name="bikemodel"
+            className="form-select"
+            id="bikemodel"
+          >
             <option value="">Select BikeModel</option>
             <option value="Hero Splendor Plus Xtec">
               Hero Splendor Plus Xtec
             </option>
             <option value="Hero HF Deluxe">Hero HF Deluxe</option>
             <option value="Hero Xpulse 200 4V">Hero Xpulse 200 4V</option>
-            <option value="4Hero Super Splendor">4Hero Super Splendor</option>
-            <option value="5Hero Glamour">5Hero Glamour</option>
-            <option value="6Hero Xtreme 160R">6Hero Xtreme 160R</option>
-            <option value="7Hero Pleasure Plus">7Hero Pleasure Plus</option>
+            <option value="Hero Super Splendor">Hero Super Splendor</option>
+            <option value="Hero Glamour">Hero Glamour</option>
+            <option value="Hero Xtreme 160R">Hero Xtreme 160R</option>
+            <option value="Hero Pleasure Plus">Hero Pleasure Plus</option>
             <option value="Hero Xoom 110">Hero Xoom 110</option>
             <option value="Hero Passion Plus">Hero Passion Plus</option>
-            <option value="10Hero Karizma XMR">10Hero Karizma XMR</option>
-          </select>
+            <option value="Hero Karizma XMR">Hero Karizma XMR</option>
+          </Field>
           <ErrorMessage
             name="bikemodel"
             component="div"
-            className="invalid-feedback"
+            className="text-red-500 text-sm"
           />
         </div>
-        <div className="form-group">
-          <label htmlFor="year">Year</label>
-          <select name="year" className="form-control" id="year">
-            <option value="">Select the Year</option>
+        <div className="mb-1">
+          <label htmlFor="year" className="block font-bold">
+            Year
+          </label>
+          <Field
+            as="select"
+            name="year"
+            className="form-select"
+            id="year"
+          >
+             <option value="">Select the Year</option>
             <option value="1995">1995</option>
             <option value="1996">1996</option>
             <option value="1997">1997</option>
@@ -121,21 +144,24 @@ function Cusform() {
             <option value="2003">2003</option>
             <option value="2004">2004</option>
             <option value="2005">2005</option>
-          </select>
+          </Field>
           <ErrorMessage
             name="year"
             component="div"
-            className="invalid-feedback"
+            className="text-red-500 text-sm"
           />
         </div>
-        <div className="form-group">
-          <label htmlFor="typeofservice">Type Of Service</label>
-          <select
+        <div className="mb-1">
+          <label htmlFor="typeofservice" className="block font-bold">
+            Type Of Service
+          </label>
+          <Field
+            as="select"
             name="typeofservice"
-            className="form-control"
+            className="form-select"
             id="typeofservice"
           >
-            <option value="">Select Type Of Service </option>
+                       <option value="">Select Type Of Service </option>
             <option value="engineoilchange">Engine Oil Change only</option>
             <option value="checkupservice">Check up service</option>
             <option value="brakeinspection">
@@ -149,21 +175,21 @@ function Cusform() {
             <option value="washingonly">Washing Only</option>
             <option value="enginerepair">Engine Repair</option>
             <option value="wiringkitservice">wiring kit service</option>
-          </select>
+
+          </Field>
           <ErrorMessage
             name="typeofservice"
             component="div"
-            className="invalid-feedback"
+            className="text-red-500 text-sm"
           />
         </div>
-        <div className="form-group">
-          <label className="block mb-2 font-bold mx-2 ">
+        <div className="mb-1">
+          <label htmlFor="customerComplaint" className="block font-bold">
             Additional Complaints
           </label>
-
           <Field
             as="textarea"
-            className="form-control"
+            className="form-textarea"
             name="customerComplaint"
             id="customerComplaint"
             placeholder="Write Your Additional Complaints"
@@ -172,16 +198,17 @@ function Cusform() {
           <ErrorMessage
             name="customerComplaint"
             component="div"
-            className="invalid-feedback"
+            className="text-red-500 text-sm"
           />
         </div>
         <button
-          type="submit"
-          className="btn btn-primary mx-2 my-2 cursor-pointer"
-        >
-          Submit
-        </button>
+      type="submit"
+      className="btn bg-blue-500 text-black py-2 px-4 rounded-md w-full mt-4"
+    >
+      Submit
+    </button>
       </Form>
+      </div>
     </Formik>
   );
 }
