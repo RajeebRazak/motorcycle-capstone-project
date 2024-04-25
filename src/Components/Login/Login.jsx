@@ -22,7 +22,7 @@ const Login = () => {
   
   const onSubmit = async (values, actions) => {
     try {
-      const response = await axios.post("http://localhost:3001/auth/login", {
+      const response = await axios.post("http://localhost:3004/auth/login", {
         email: values.email,
         password: values.password,
       });
@@ -32,9 +32,10 @@ const Login = () => {
   
       const userRole = response.data.role;
       console.log(userRole);
+      console.log(response.data);
   
       if (userRole === "admin") {
-        navigate('/admin');
+        navigate("/admin");
       } else {
         // Redirect to home page upon successful login
         navigate('/');

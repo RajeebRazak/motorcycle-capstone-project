@@ -11,7 +11,7 @@ function Service() {
     // Fetch data from backend API
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:3001/form/forms");
+        const response = await axios.get("http://localhost:3004/form/forms");
         console.log("Response data:", response.data);
         setFormData(response.data);
       } catch (error) {
@@ -21,30 +21,7 @@ function Service() {
     fetchData();
   }, []); // Empty dependency array ensures this effect runs only once after initial
 
-  const handlePayment = async (index) => {
-    try {
-      // Fetch updated data from the backend
-      const response = await axios.get("http://localhost:3001/form/forms");
-      const updatedFormData = response.data;
-
-      // Assuming your data structure has a field named 'status'
-      // Check if the status is 'approved'
-      if (updatedFormData[index].status === "approved") {
-        // Update the payment status locally
-        const updatedFormDataCopy = [...updatedFormData];
-        updatedFormDataCopy[index].paymentStatus = "paid";
-        setFormData(updatedFormDataCopy);
-
-        // Process the payment
-        // You can add your payment processing logic here
-        console.log("Payment processed successfully");
-      } else {
-        console.log("Cannot process payment for pending requests");
-      }
-    } catch (error) {
-      console.error("Error processing payment", error);
-    }
-  };
+ 
 
   return (
     <div>
@@ -103,9 +80,6 @@ function Service() {
               <th className="py-3 px-4 text-left text-sm font-medium text-gray-500 uppercase tracking-wider">
                 Status
               </th>
-              <th className="py-3 px-4 text-left text-sm font-medium text-gray-500 uppercase tracking-wider">
-                Payment
-              </th>
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-200">
@@ -140,20 +114,7 @@ function Service() {
                     {data.status === "pending" ? "Pending" : "Approved"}
                   </span>
                 </td>
-                <td className="py-4 px-4 whitespace-nowrap">
-                  {data.status === "approved" &&
-                    data.paymentStatus !== "paid" && (
-                      <button
-                        className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded focus:outline-none focus:ring focus:ring-blue-500"
-                        onClick={() => handlePayment(index)}
-                      >
-                        Pay Now
-                      </button>
-                    )}
-                  {data.paymentStatus === "paid" && (
-                    <span className="text-green-500">Paid</span>
-                  )}
-                </td>
+               
               </tr>
             ))}
           </tbody>

@@ -37,10 +37,11 @@ function CustomNavbar() {
     fetchFirstName();
   }, [navigate]);
 
-  const handleLogout = async () => {
+  const handleLogout =  () => {
     try {
       // Perform logout actions, e.g., clearing local storage, redirecting to login page, etc.
-      localStorage.removeItem("token");
+      //localStorage.removeItem("token");
+      console.log("logged out")
       navigate("/login");
     } catch (error) {
       console.error("Error logging out", error);
@@ -84,7 +85,7 @@ function CustomNavbar() {
             <Button
               className="ml-md-auto"
               variant="outline-primary"
-              onClick={handleLogout}
+              onClick={() => {handleLogout()}}
             >
               Log out
             </Button>

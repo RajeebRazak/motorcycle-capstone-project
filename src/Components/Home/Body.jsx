@@ -73,18 +73,21 @@ function Footer() {
                   className="form-input mb-4 w-full border-gray-300 rounded-md"
                   type="email"
                   placeholder="Your email here"
+                  id="email"
                 />
                 <label className="block mb-2">Name</label>
                 <input
                   className="form-input mb-4 w-full border-gray-300 rounded-md"
                   type="text"
                   placeholder="Your name"
+                  id="name"
                 />
                 <label className="block mb-2">Contact Number</label>
                 <input
                   className="form-input mb-4 w-full border-gray-300 rounded-md"
                   type="text"
                   placeholder="Contact number"
+                  id="contact"
                 />
                 <button className="btn bg-blue-500 text-white py-2 px-4 rounded-md">
                   Submit
