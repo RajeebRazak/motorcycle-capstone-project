@@ -10,7 +10,7 @@ import Service from "./Components/Service/Service";
 import Gallery from "./Components/Service/Gallery";
 import Cusform from "./Components/Service/Form";
 import Register from "./Components/Login/Register";
-import Cusprice from "./Components/Service/Cusprice.jsx";
+import Cusprice from "./Components/Service/Cusprice";
 import Admin from "./Components/Admin/Admin";
 import PrivateRoute from "./Components/Admin/Privateroute";
 import Cart from "./Components/Service/Cart";
